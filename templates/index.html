@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+    <form action="add" method="POST">{%csrf_token%}
+        <label>Enter your name</label>
+        <input type="text" placeholder="enter your name" name="fname">
+        <label>Enter your address</label>
+        <input type="text" placeholder="enter your address" name="fadd">
+
+        <input type="submit" value="ADD">{{message}}
+    </form>
+    
+    <form action="show">
+        <table border="1" width="50%">
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+            </tr>
+            {%for i in empkey%}
+            <tr>
+                <td>{{i.ename}}</td>
+                <td>{{i.eadd}}</td>
+            </tr>
+            {%endfor%}
+        </table>
+        <input type="submit" value="Display">
+    </form>
+
+    <form action="del" method="POST">{%csrf_token%}
+        <label>Enter the name to delete</label>
+
+        <input type="text" name="delname">
+        
+        <input type="submit" value="DELETE">{{msg1}}
+    </form>
+
+    <form action="up" method="POST">{%csrf_token%}
+        <label>Enter the name to edit</label>
+        <input type="text" name="oldname">
+        <label>Enter the new name</label>
+        <input type="text" name="newname">
+        <label>Enter the address to edit</label>
+        <input type="text" name="oldad">
+        <label>Enter the new address</label>
+        <input type="text" name="newad">
+        
+        <input type="submit" value="EDIT">
+
+    </form>
+    </pre>
+    
+</body>
+</html>
